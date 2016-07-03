@@ -1,0 +1,24 @@
+{
+  "name": "sachatelgenhofoudekoehorst/subtitles",
+  "require": {
+    "lstrojny/fxmlrpc": "^0.12.0",
+    "php-http/message": "^1.2",
+    "guzzlehttp/guzzle": "^6.2",
+    "php-http/guzzle6-adapter": "^1.1",
+    "vlucas/phpdotenv": "^2.3",
+    "illuminate/cache": "^5.2",
+    "illuminate/filesystem": "^5.2",
+    "illuminate/container": "^5.2"
+  },
+  "authors": [
+    {
+      "name": "Sacha Telgenhof Oude Koehorst",
+      "email": "stelgenhof@gmail.com"
+    }
+  ],
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"copy('.env.example', '.env');\""
+    ]
+  }
+}
