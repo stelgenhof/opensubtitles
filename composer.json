@@ -8,7 +8,8 @@
     "vlucas/phpdotenv": "^2.3",
     "illuminate/cache": "^5.2",
     "illuminate/filesystem": "^5.2",
-    "illuminate/container": "^5.2"
+    "illuminate/container": "^5.2",
+    "league/climate": "^3.2"
   },
   "authors": [
     {
