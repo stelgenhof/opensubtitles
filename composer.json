@@ -1,5 +1,5 @@
 {
-  "name": "sachatelgenhofoudekoehorst/subtitles",
+  "name": "sachatelgenhofoudekoehorst/opensubtitles",
   "require": {
     "lstrojny/fxmlrpc": "^0.12.0",
     "php-http/message": "^1.2",
