@@ -6,8 +6,8 @@ use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
 
-CONST APP_NAME = 'OpenSubtitles Downloader';
-CONST APP_VERSION = '0.1';
+const APP_NAME = 'OpenSubtitles Downloader';
+const APP_VERSION = '0.1';
 $appname = APP_NAME . ' v' . APP_VERSION;
 
 date_default_timezone_set('Asia/Tokyo');
