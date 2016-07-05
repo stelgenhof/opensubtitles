@@ -1,22 +1,22 @@
-OpenSubtitles
+OpenSubtitles Downloader
 ==========
 
-OpenSubtitles is a simple console application to download subtitles from Opensubtitles.org. Just provide the IMDB Movie ID and it will download 
+OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org. Just provide the IMDB Movie ID and it will download 
 all subtitles for the specified languages.
 
 System Requirements
 -------------------
 
-You need **PHP >= 5.5.0** to use `sachatelgenhofoudekoehorst/opensubtitles` but the latest stable version of PHP is recommended.
+You need **PHP >= 5.5.0** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended.
 
 
 Installation
 ------------
 
-Install `sachatelgenhofoudekoehorst/opensubtitles` using Composer.
+Install OpenSubtitles Downloader by cloning this repository:
 
 ```
-$ composer require sachatelgenhofoudekoehorst/opensubtitles
+$ git clone https://github.com/stelgenhof/opensubtitles.git
 ```
 
 Basic Usage
