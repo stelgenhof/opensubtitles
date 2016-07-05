@@ -23,7 +23,7 @@ Basic Usage
 -----------
 
 ```
-$ ./client.php
+$ ./opensubtitles.php
 ```
 
 Then just enter the IMDB Movie ID. The downloanded subtitles will be saved in a folder by the moviename. For subtitles files that are not
