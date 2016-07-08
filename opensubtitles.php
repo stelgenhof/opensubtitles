@@ -2,9 +2,18 @@
 <?php
 require 'vendor/autoload.php';
 
+use Dotenv\Dotenv;
+use fXmlRpc\Client as fXmlRpcClient;
+use fXmlRpc\Parser\NativeParser;
+use fXmlRpc\Serializer\NativeSerializer;
+use fXmlRpc\Transport\HttpAdapterTransport;
+use GuzzleHttp\Client as GuzzleClient;
+use Http\Adapter\Guzzle6\Client as AdapterGuzzle6Client;
+use Http\Message\MessageFactory\GuzzleMessageFactory;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
+use League\CLImate\CLImate;
 
 const APP_NAME = 'OpenSubtitles Downloader';
 const APP_VERSION = '0.1';
@@ -13,7 +22,7 @@ $appname = APP_NAME . ' v' . APP_VERSION;
 date_default_timezone_set('Asia/Tokyo');
 
 // Start CLI
-$climate = new League\CLImate\CLImate;
+$climate = new CLImate;
 $climate->clear();
 
 $climate->description($appname);
@@ -24,7 +33,7 @@ $input = $climate->input('Please enter the IMDB Movie Number:');
 $imdbID = $input->prompt();
 
 // Load the configuration
-$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv = new Dotenv(__DIR__);
 $dotenv->load();
 
 // Initialize the filesystem/cache
@@ -42,15 +51,12 @@ $cacheManager = new CacheManager($container);
 $cache = $cacheManager->store();
 
 // Initialize the HTTP and XMLRPC Clients
-$httpClient = new GuzzleHttp\Client();
-$client = new fXmlRpc\Client(
+$httpClient = new GuzzleClient();
+$client = new fXmlRpcClient(
     getenv('OPENSUBTITLES_API_URL'),
-    new fXmlRpc\Transport\HttpAdapterTransport(
-        new \Http\Message\MessageFactory\GuzzleMessageFactory(),
-        new \Http\Adapter\Guzzle6\Client($httpClient)
-    ),
-    new fXmlRpc\Parser\NativeParser(),
-    new fXmlRpc\Serializer\NativeSerializer()
+    new HttpAdapterTransport(new GuzzleMessageFactory(), new AdapterGuzzle6Client($httpClient)),
+    new NativeParser(),
+    new NativeSerializer()
 );
 
 try {
