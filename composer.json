@@ -2,6 +2,9 @@
   "name": "sachatelgenhofoudekoehorst/opensubtitles",
   "require": {
     "php": ">=5.5.0",
+    "ext-mbstring": "*",
+    "ext-intl": "*",
+    "ext-simplexml": "*",
     "lstrojny/fxmlrpc": "^0.12.0",
     "php-http/message": "^1.2",
     "guzzlehttp/guzzle": "^6.2",
