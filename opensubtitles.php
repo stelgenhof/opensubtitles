@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 require 'vendor/autoload.php';
 
@@ -105,7 +105,11 @@ try {
             $container['files']->delete($srtFile);
         }
     } else {
-        $climate->error(sprintf('No subtitles found for IMDB ID %s. Please make sure to provide valid IMDB ID.', $imdbID));
+        $languages = implode(', ', array_map(function ($a) {
+            return locale_get_display_language($a, 'en');
+        }, explode(',', getenv('OPENSUBTITLES_LANGUAGES'))));
+
+        $climate->error(sprintf('No %s subtitles found for IMDB ID %s. Please make sure to provide valid IMDB ID.', $languages, $imdbID));
     }
 } catch (Exception $e) {
     echo $e->getMessage();
