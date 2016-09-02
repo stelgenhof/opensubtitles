@@ -8,6 +8,11 @@ System Requirements
 -------------------
 
 You need **PHP >= 5.5.0** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended.
+In addition, the following PHP extensions are needed:
+
+  - mbstring
+  - intl
+  - simplexml
 
 
 Installation
@@ -26,7 +31,7 @@ Basic Usage
 $ ./opensubtitles.php
 ```
 
-Then just enter the IMDB Movie ID. The downloanded subtitles will be saved in a folder by the moviename. For subtitles files that are not
+Then just enter the IMDB Movie ID. The downloaded subtitles will be saved in a folder by the movie name. For subtitles files that are not
  encoded in UTF-8, these will be automatically converted to UTF-8 (if possible).
  
 Disclaimer

@@ -22,14 +22,14 @@ $appname = APP_NAME . ' v' . APP_VERSION;
 date_default_timezone_set('Asia/Tokyo');
 
 // Start CLI
-$climate = new CLImate;
-$climate->clear();
+$cli = new CLImate;
+$cli->clear();
 
-$climate->description($appname);
-$climate->lightGreen($appname);
-$climate->lightGreen()->border('-*-', strlen($appname));
+$cli->description($appname);
+$cli->lightGreen($appname);
+$cli->lightGreen()->border('-*-', strlen($appname));
 
-$input = $climate->input('Please enter the IMDB Movie Number:');
+$input = $cli->input('Please enter the IMDB Movie Number:');
 $imdbID = $input->prompt();
 
 // Load the configuration
@@ -77,14 +77,15 @@ try {
             $cache->put($cache_key, $response, 60);
             $em = $response;
         } else {
-            $climate->error('Something wrong.');
+            $cli->error('Something wrong.');
         }
     }
 
     // Process retrieved data
     if (sizeof($response['data'])) {
         foreach ($response['data'] as $i => $hit) {
-            $climate->comment(sprintf('%d: %s (%s) - [%s] ', $i + 1, $hit['MovieName'], $hit['MovieYear'], $hit['SubFileName']));
+
+            $cli->comment(sprintf('%d: %s (%s) - %s - [%s] ', $i + 1, $hit['MovieName'], $hit['MovieYear'], $hit['IDSubtitleFile'], $hit['SubFileName']));
 
             $movieDir = $hit['MovieName'] . ' - ' . $hit['MovieYear'];
             if (!$container['files']->isDirectory($movieDir)) {
@@ -94,7 +95,12 @@ try {
             // Download subtitle file if not yet downloaded
             $subtitleFile = $movieDir . '/' . basename($hit['SubDownloadLink']);
             if (!is_readable($subtitleFile)) {
-                $httpClient->request('GET', $hit['SubDownloadLink'], ['sink' => $movieDir . '/' . basename($hit['SubDownloadLink'])]);
+                try {
+                    $httpClient->request('GET', $hit['SubDownloadLink'], ['sink' => $movieDir . '/' . basename($hit['SubDownloadLink'])]);
+                } catch (Exception $e) {
+                    $cli->error($e->getMessage());
+                    exit();
+                }
             }
 
             $srtFile = $movieDir . '/' . basename($hit['SubDownloadLink'], '.gz') . '.srt';
@@ -115,13 +121,13 @@ try {
             return locale_get_display_language($a, 'en');
         }, explode(',', getenv('OPENSUBTITLES_LANGUAGES'))));
 
-        $climate->error(sprintf('No %s subtitles found for IMDB ID %s. Please make sure to provide valid IMDB ID.', $languages, $imdbID));
+        $cli->error(sprintf('No %s subtitles found for IMDB ID %s. Please make sure to provide valid IMDB ID.', $languages, $imdbID));
     }
 } catch (Exception $e) {
-    echo $e->getMessage();
+    $cli->error($e->getMessage());
 }
 
-$climate->br()->info('Completed.');
+$cli->br()->info('Completed.');
 
 /**
  * Uncompresses a GZipped file
