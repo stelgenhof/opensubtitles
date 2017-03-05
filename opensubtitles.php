@@ -68,7 +68,7 @@ try {
     if (is_null($response)) {
 
         // Login to OpenSubtitles
-        $response = $client->call('LogIn', [getenv('OPENSUBTITLES_USERNAME'), getenv('OPENSUBTITLES_PASSWORD'), 'en', 'OSTestUserAgent']);
+        $response = $client->call('LogIn', [getenv('OPENSUBTITLES_USERNAME'), getenv('OPENSUBTITLES_PASSWORD'), 'en', 'OSTestUserAgentTemp']);
 
         // Proceed if ok and token is provided
         if ($response['status'] == '200 OK' && !empty($response['token'])) {
