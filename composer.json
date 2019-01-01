@@ -30,6 +30,6 @@
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
     ],
-    "php-cs-fixer": "./vendor/bin/php-cs-fixer fix ."
+    "format": "./vendor/bin/php-cs-fixer fix ."
   }
 }
