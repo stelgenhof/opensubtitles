@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use fXmlRpc\Client as fXmlRpcClient;
@@ -17,7 +17,7 @@ use League\CLImate\CLImate;
 
 const APP_NAME = 'OpenSubtitles Downloader';
 const APP_VERSION = '0.1';
-$appname = APP_NAME . ' v' . APP_VERSION;
+$app_name = APP_NAME . ' v' . APP_VERSION;
 
 date_default_timezone_set('Asia/Tokyo');
 
@@ -25,16 +25,16 @@ date_default_timezone_set('Asia/Tokyo');
 $cli = new CLImate;
 $cli->clear();
 
-$cli->description($appname);
-$cli->lightGreen($appname);
-$cli->lightGreen()->border('-*-', strlen($appname));
+$cli->description($app_name);
+$cli->lightGreen($app_name);
+$cli->lightGreen()->border('-*-', strlen($app_name));
 
 $input = $cli->input('Please enter the IMDB Movie Number:');
 $imdbID = $input->prompt();
 
 // Load the configuration
-$dotenv = new Dotenv(__DIR__);
-$dotenv->load();
+$env = new Dotenv(__DIR__);
+$env->load();
 
 // Initialize the filesystem/cache
 $container = new Container;
@@ -65,13 +65,13 @@ try {
     $response = $cache->get($cache_key);
 
     // Get data from OpenSubtitles if not cached
-    if (is_null($response)) {
+    if ($response === null) {
 
         // Login to OpenSubtitles
         $response = $client->call('LogIn', [getenv('OPENSUBTITLES_USERNAME'), getenv('OPENSUBTITLES_PASSWORD'), 'en', 'OSTestUserAgentTemp']);
 
         // Proceed if ok and token is provided
-        if ($response['status'] == '200 OK' && !empty($response['token'])) {
+        if ($response['status'] === '200 OK' && !empty($response['token'])) {
             $response = $client->call('SearchSubtitles', [$response['token'], [['sublanguageid' => getenv('OPENSUBTITLES_LANGUAGES'), 'imdbid' => $imdbID]]]);
 
             $cache->put($cache_key, $response, 60);
@@ -82,7 +82,7 @@ try {
     }
 
     // Process retrieved data
-    if (sizeof($response['data'])) {
+    if (count($response['data'])) {
         foreach ($response['data'] as $i => $hit) {
 
             $cli->comment(sprintf('%d: %s (%s) - %s - [%s] ', $i + 1, $hit['MovieName'], $hit['MovieYear'], $hit['IDSubtitleFile'], $hit['SubFileName']));
@@ -138,7 +138,7 @@ $cli->br()->info('Completed.');
 function uncompress($srcName, $dstName)
 {
     $sfp = gzopen($srcName, 'rb');
-    $fp = fopen($dstName, 'w');
+    $fp = fopen($dstName, 'wb');
 
     while (!gzeof($sfp)) {
         $string = gzread($sfp, 4096);
