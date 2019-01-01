@@ -6,6 +6,7 @@
     "ext-intl": "*",
     "ext-simplexml": "*",
     "ext-iconv": "*",
+    "ext-zlib": "*",
     "lstrojny/fxmlrpc": "^0.12.0",
     "php-http/message": "^1.2",
     "guzzlehttp/guzzle": "^6.2",
