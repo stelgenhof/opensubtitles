@@ -1,31 +1,34 @@
 {
   "name": "sachatelgenhofoudekoehorst/opensubtitles",
+  "description": "OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sacha Telgenhof Oude Koehorst",
+      "email": "me@sachatelgenhof.com"
+    }
+  ],
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=7.1",
     "ext-mbstring": "*",
     "ext-intl": "*",
     "ext-simplexml": "*",
     "ext-iconv": "*",
+    "ext-xmlrpc": "*",
     "ext-zlib": "*",
-    "lstrojny/fxmlrpc": "^0.12.0",
+    "lstrojny/fxmlrpc": "^0.14.0",
     "php-http/message": "^1.2",
     "guzzlehttp/guzzle": "^6.2",
     "php-http/guzzle6-adapter": "^1.1",
-    "vlucas/phpdotenv": "^2.3",
-    "illuminate/cache": "^5.2",
-    "illuminate/filesystem": "^5.2",
-    "illuminate/container": "^5.2",
+    "vlucas/phpdotenv": "^3.3",
+    "illuminate/cache": "^5.7",
+    "illuminate/filesystem": "^5.7",
+    "illuminate/container": "^5.7",
     "league/climate": "^3.2"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^1.11"
+    "friendsofphp/php-cs-fixer": "^2.14"
   },
-  "authors": [
-    {
-      "name": "Sacha Telgenhof Oude Koehorst",
-      "email": "stelgenhof@gmail.com"
-    }
-  ],
   "scripts": {
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
