@@ -1,15 +1,16 @@
 {
-  "name": "sachatelgenhofoudekoehorst/opensubtitles",
+  "name": "stelgenhof/opensubtitles",
   "description": "OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org.",
   "license": "MIT",
   "authors": [
     {
       "name": "Sacha Telgenhof Oude Koehorst",
-      "email": "me@sachatelgenhof.com"
+      "email": "me@sachatelgenhof.com",
+      "role": "Owner"
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": "^7.3",
     "ext-mbstring": "*",
     "ext-intl": "*",
     "ext-simplexml": "*",
@@ -17,17 +18,18 @@
     "ext-xmlrpc": "*",
     "ext-zlib": "*",
     "lstrojny/fxmlrpc": "^0.14.0",
-    "php-http/message": "^1.2",
-    "guzzlehttp/guzzle": "^6.2",
+    "php-http/message": "^1.8",
+    "guzzlehttp/guzzle": "^6.5",
     "php-http/guzzle6-adapter": "^1.1",
-    "vlucas/phpdotenv": "^3.3",
-    "illuminate/cache": "^5.7",
-    "illuminate/filesystem": "^5.7",
-    "illuminate/container": "^5.7",
-    "league/climate": "^3.2"
+    "vlucas/phpdotenv": "^3.6",
+    "illuminate/cache": "^5.8",
+    "illuminate/filesystem": "^5.8",
+    "illuminate/container": "^5.8",
+    "league/climate": "^3.5"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.14"
+    "roave/security-advisories": "dev-master",
+    "friendsofphp/php-cs-fixer": "^2.16"
   },
   "scripts": {
     "post-root-package-install": [
