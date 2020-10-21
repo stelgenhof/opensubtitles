@@ -123,10 +123,7 @@ try {
                         $hit['SubDownloadLink'],
                         ['sink' => $movieDir.'/'.\basename($hit['SubDownloadLink'])]
                     );
-                } catch (Exception $e) {
-                    $cli->error($e->getMessage());
-                    exit();
-                } catch (GuzzleException $e) {
+                } catch (Exception | GuzzleException $e) {
                     $cli->error($e->getMessage());
                     exit();
                 }
@@ -171,7 +168,7 @@ $cli->br()->info('Completed.');
  * @param string $srcName the filepath of the original GZipped file
  * @param string $dstName the filepath of the uncompressed file (destination)
  */
-function uncompress($srcName, $dstName): void
+function uncompress(string $srcName, string $dstName): void
 {
     $sfp = \gzopen($srcName, 'rb');
     $fp = \fopen($dstName, 'wb');
