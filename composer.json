@@ -20,7 +20,7 @@
     "lstrojny/fxmlrpc": "^0.15.0",
     "php-http/message": "^1.8",
     "guzzlehttp/guzzle": "^6.5",
-    "php-http/guzzle6-adapter": "^1.1",
+    "php-http/guzzle6-adapter": "^2.0",
     "vlucas/phpdotenv": "^3.6",
     "illuminate/cache": "^5.8",
     "illuminate/filesystem": "^5.8",
@@ -35,6 +35,6 @@
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
     ],
-    "format": "./vendor/bin/php-cs-fixer fix ."
+    "format": "./vendor/bin/php-cs-fixer fix --allow-risky=yes"
   }
 }
