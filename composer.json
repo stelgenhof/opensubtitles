@@ -17,7 +17,7 @@
     "ext-iconv": "*",
     "ext-xmlrpc": "*",
     "ext-zlib": "*",
-    "lstrojny/fxmlrpc": "^0.14.0",
+    "lstrojny/fxmlrpc": "^0.15.0",
     "php-http/message": "^1.8",
     "guzzlehttp/guzzle": "^6.5",
     "php-http/guzzle6-adapter": "^1.1",
