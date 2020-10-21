@@ -21,10 +21,10 @@ use League\CLImate\CLImate;
 
 const APP_NAME = 'OpenSubtitles Downloader';
 const APP_VERSION = '0.3';
-$app_name = APP_NAME . ' v' . APP_VERSION;
+$app_name = APP_NAME.' v'.APP_VERSION;
 
 // Start CLI
-$cli = new CLImate;
+$cli = new CLImate();
 $cli->clear();
 
 $cli->description($app_name);
@@ -42,16 +42,16 @@ try {
 }
 
 // Initialize the filesystem/cache
-$container = new Container;
+$container = new Container();
 $container['config'] = [
     'cache.default' => 'file',
     'cache.stores.file' => [
         'driver' => 'file',
-        'path' => __DIR__ . '/_cache'
-    ]
+        'path' => __DIR__.'/_cache',
+    ],
 ];
 
-$container['files'] = new Filesystem;
+$container['files'] = new Filesystem();
 $cacheManager = new CacheManager($container);
 $cache = $cacheManager->store();
 
@@ -68,19 +68,18 @@ $input = $cli->input('Please enter the IMDB Movie Number:');
 $imdbID = $input->prompt();
 
 try {
-    $cache_key = \md5($_ENV['OPENSUBTITLES_LANGUAGES'] . $imdbID);
+    $cache_key = \md5($_ENV['OPENSUBTITLES_LANGUAGES'].$imdbID);
 
     $response = $cache->get($cache_key);
 
     // Get data from OpenSubtitles if not cached
     if (null === $response) {
-
         // Login to OpenSubtitles
         $response = $client->call('LogIn', [
             $_ENV['OPENSUBTITLES_USERNAME'],
             $_ENV['OPENSUBTITLES_PASSWORD'],
             'en',
-            $_ENV['OPENSUBTITLES_USER_AGENT']
+            $_ENV['OPENSUBTITLES_USER_AGENT'],
         ]);
 
         // Proceed if ok and token is provided
@@ -93,7 +92,7 @@ try {
             $cache->put($cache_key, $response, 60);
             $em = $response;
         } else {
-            $cli->error('Unable to retrieve the subtitles (' . $response['status'] . ').');
+            $cli->error('Unable to retrieve the subtitles ('.$response['status'].').');
             exit();
         }
     }
@@ -110,19 +109,19 @@ try {
                 $hit['SubFileName']
             ));
 
-            $movieDir = $hit['MovieName'] . ' - ' . $hit['MovieYear'];
+            $movieDir = $hit['MovieName'].' - '.$hit['MovieYear'];
             if (!$container['files']->isDirectory($movieDir)) {
                 $container['files']->makeDirectory($movieDir);
             }
 
             // Download subtitle file if not yet downloaded
-            $subtitleFile = $movieDir . '/' . \basename($hit['SubDownloadLink']);
+            $subtitleFile = $movieDir.'/'.\basename($hit['SubDownloadLink']);
             if (!\is_readable($subtitleFile)) {
                 try {
                     $httpClient->request(
                         'GET',
                         $hit['SubDownloadLink'],
-                        ['sink' => $movieDir . '/' . \basename($hit['SubDownloadLink'])]
+                        ['sink' => $movieDir.'/'.\basename($hit['SubDownloadLink'])]
                     );
                 } catch (Exception $e) {
                     $cli->error($e->getMessage());
@@ -133,7 +132,7 @@ try {
                 }
             }
 
-            $srtFile = $movieDir . '/' . \basename($hit['SubDownloadLink'], '.gz') . '.srt';
+            $srtFile = $movieDir.'/'.\basename($hit['SubDownloadLink'], '.gz').'.srt';
             uncompress($subtitleFile, $srtFile);
 
             $srtContents = $container['files']->get($srtFile);
@@ -142,7 +141,7 @@ try {
                 $srtContents = \iconv($hit['SubEncoding'], $_ENV['OPENSUBTITLES_TARGET_ENCODING'], $srtContents);
             }
             $container['files']->put(
-                $movieDir . '/' . $hit['IDSubtitleFile'] . '-' . $hit['MovieName'] . '.' . $hit['LanguageName'] . '.srt',
+                $movieDir.'/'.$hit['IDSubtitleFile'].'-'.$hit['MovieName'].'.'.$hit['LanguageName'].'.srt',
                 $srtContents
             );
 
@@ -167,12 +166,12 @@ try {
 $cli->br()->info('Completed.');
 
 /**
- * Inflates a GZipped file
+ * Inflates a GZipped file.
  *
  * @param string $srcName the filepath of the original GZipped file
  * @param string $dstName the filepath of the uncompressed file (destination)
  */
-function uncompress($srcName, $dstName)
+function uncompress($srcName, $dstName): void
 {
     $sfp = \gzopen($srcName, 'rb');
     $fp = \fopen($dstName, 'wb');
