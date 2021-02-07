@@ -6,7 +6,7 @@
     {
       "name": "Sacha Telgenhof Oude Koehorst",
       "email": "me@sachatelgenhof.com",
-      "role": "Owner"
+      "role": "Maintainer"
     }
   ],
   "require": {
@@ -21,10 +21,10 @@
     "php-http/message": "^1.8",
     "guzzlehttp/guzzle": "^6.5",
     "php-http/guzzle6-adapter": "^2.0",
-    "vlucas/phpdotenv": "^3.6",
-    "illuminate/cache": "^5.8",
-    "illuminate/filesystem": "^5.8",
-    "illuminate/container": "^5.8",
+    "vlucas/phpdotenv": "^5.3",
+    "illuminate/cache": "^8.26",
+    "illuminate/filesystem": "^8.26",
+    "illuminate/container": "^8.26",
     "league/climate": "^3.5"
   },
   "require-dev": {

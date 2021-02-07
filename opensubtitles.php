@@ -34,8 +34,8 @@ $cli->clearLine();
 
 // Load the configuration
 try {
-    $env = Dotenv::create(__DIR__);
-    $env->load();
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 } catch (InvalidPathException $e) {
     $cli->error(\sprintf('ERROR: %s', $e->getMessage()));
     exit();
