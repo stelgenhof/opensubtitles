@@ -29,7 +29,7 @@ $cli->clear();
 
 $cli->description($app_name);
 $cli->lightGreen($app_name);
-$cli->lightGreen()->border('-*-', \strlen($app_name));
+$cli->lightGreen()->border('-*-', strlen($app_name));
 $cli->clearLine();
 
 // Load the configuration
@@ -37,7 +37,7 @@ try {
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 } catch (InvalidPathException $e) {
-    $cli->error(\sprintf('ERROR: %s', $e->getMessage()));
+    $cli->error(sprintf('ERROR: %s', $e->getMessage()));
     exit();
 }
 
@@ -68,7 +68,7 @@ $input = $cli->input('Please enter the IMDB Movie Number:');
 $imdbID = $input->prompt();
 
 try {
-    $cache_key = \md5($_ENV['OPENSUBTITLES_LANGUAGES'].$imdbID);
+    $cache_key = md5($_ENV['OPENSUBTITLES_LANGUAGES'].$imdbID);
 
     $response = $cache->get($cache_key);
 
@@ -98,9 +98,9 @@ try {
     }
 
     // Process retrieved data
-    if (\count($response['data'])) {
+    if (count($response['data'])) {
         foreach ($response['data'] as $i => $hit) {
-            $cli->comment(\sprintf(
+            $cli->comment(sprintf(
                 '%d: %s (%s) - %s - [%s] ',
                 $i + 1,
                 $hit['MovieName'],
@@ -115,13 +115,13 @@ try {
             }
 
             // Download subtitle file if not yet downloaded
-            $subtitleFile = $movieDir.'/'.\basename($hit['SubDownloadLink']);
-            if (!\is_readable($subtitleFile)) {
+            $subtitleFile = $movieDir.'/'.basename($hit['SubDownloadLink']);
+            if (!is_readable($subtitleFile)) {
                 try {
                     $httpClient->request(
                         'GET',
                         $hit['SubDownloadLink'],
-                        ['sink' => $movieDir.'/'.\basename($hit['SubDownloadLink'])]
+                        ['sink' => $movieDir.'/'.basename($hit['SubDownloadLink'])]
                     );
                 } catch (Exception | GuzzleException $e) {
                     $cli->error($e->getMessage());
@@ -129,13 +129,13 @@ try {
                 }
             }
 
-            $srtFile = $movieDir.'/'.\basename($hit['SubDownloadLink'], '.gz').'.srt';
+            $srtFile = $movieDir.'/'.basename($hit['SubDownloadLink'], '.gz').'.srt';
             uncompress($subtitleFile, $srtFile);
 
             $srtContents = $container['files']->get($srtFile);
 
             if ($_ENV['OPENSUBTITLES_TARGET_ENCODING'] !== $hit['SubEncoding']) {
-                $srtContents = \iconv($hit['SubEncoding'], $_ENV['OPENSUBTITLES_TARGET_ENCODING'], $srtContents);
+                $srtContents = iconv($hit['SubEncoding'], $_ENV['OPENSUBTITLES_TARGET_ENCODING'], $srtContents);
             }
             $container['files']->put(
                 $movieDir.'/'.$hit['IDSubtitleFile'].'-'.$hit['MovieName'].'.'.$hit['LanguageName'].'.srt',
@@ -146,18 +146,18 @@ try {
             $container['files']->delete($srtFile);
         }
     } else {
-        $languages = \implode(', ', \array_map(static function ($a) {
-            return \locale_get_display_language($a, 'en');
-        }, \explode(',', $_ENV['OPENSUBTITLES_LANGUAGES'])));
+        $languages = implode(', ', array_map(static function ($a) {
+            return locale_get_display_language($a, 'en');
+        }, explode(',', $_ENV['OPENSUBTITLES_LANGUAGES'])));
 
-        $cli->error(\sprintf(
+        $cli->error(sprintf(
             'No %s subtitles found for IMDB ID %s. Please make sure to provide valid IMDB ID.',
             $languages,
             $imdbID
         ));
     }
 } catch (Exception | \Psr\SimpleCache\InvalidArgumentException $e) {
-    $cli->error(\sprintf('ERROR: %s', $e->getMessage()));
+    $cli->error(sprintf('ERROR: %s', $e->getMessage()));
 }
 
 $cli->br()->info('Completed.');
@@ -170,13 +170,13 @@ $cli->br()->info('Completed.');
  */
 function uncompress(string $srcName, string $dstName): void
 {
-    $sfp = \gzopen($srcName, 'rb');
-    $fp = \fopen($dstName, 'wb');
+    $sfp = gzopen($srcName, 'rb');
+    $fp = fopen($dstName, 'wb');
 
-    while (!\gzeof($sfp)) {
-        $string = \gzread($sfp, 4096);
-        \fwrite($fp, $string, \strlen($string));
+    while (!gzeof($sfp)) {
+        $string = gzread($sfp, 4096);
+        fwrite($fp, $string, strlen($string));
     }
-    \gzclose($sfp);
-    \fclose($fp);
+    gzclose($sfp);
+    fclose($fp);
 }
