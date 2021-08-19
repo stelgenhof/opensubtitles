@@ -7,7 +7,7 @@ all subtitles for the specified languages.
 System Requirements
 -------------------
 
-You need **PHP >= 7.3** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended.
+You need **PHP >= 7.4** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended.
 In addition, the following PHP extensions are needed:
 
   - mbstring

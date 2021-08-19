@@ -31,9 +31,14 @@
     "roave/security-advisories": "dev-latest",
     "friendsofphp/php-cs-fixer": "^3.0"
   },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
   "scripts": {
     "post-root-package-install": [
-      "php -r \"copy('.env.example', '.env');\""
+      "php -r \"copy('.env.dist', '.env');\""
     ],
     "format": "./vendor/bin/php-cs-fixer fix --allow-risky=yes"
   }
