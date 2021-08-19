@@ -4,3 +4,4 @@ composer.lock
 .env
 _cache
 /.php_cs.cache
+/.php-cs-fixer.cache

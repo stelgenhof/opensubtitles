@@ -10,14 +10,14 @@
     }
   ],
   "require": {
-    "php": "^7.3",
+    "php": "^7.4 || ^8.0",
     "ext-mbstring": "*",
     "ext-intl": "*",
     "ext-simplexml": "*",
     "ext-iconv": "*",
     "ext-xmlrpc": "*",
     "ext-zlib": "*",
-    "lstrojny/fxmlrpc": "^0.15.0",
+    "lstrojny/fxmlrpc": "^0.22.0",
     "php-http/message": "^1.8",
     "guzzlehttp/guzzle": "^6.5",
     "php-http/guzzle6-adapter": "^2.0",
@@ -28,8 +28,8 @@
     "league/climate": "^3.5"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-master",
-    "friendsofphp/php-cs-fixer": "^2.16"
+    "roave/security-advisories": "dev-latest",
+    "friendsofphp/php-cs-fixer": "^3.0"
   },
   "scripts": {
     "post-root-package-install": [
