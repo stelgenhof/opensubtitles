@@ -1,5 +1,6 @@
 {
   "name": "stelgenhof/opensubtitles",
+  "type": "project",
   "description": "OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org.",
   "license": "MIT",
   "authors": [
@@ -9,6 +10,8 @@
       "role": "Maintainer"
     }
   ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "php": "^7.4 || ^8.0",
     "ext-mbstring": "*",
