@@ -43,7 +43,7 @@ files that are not encoded in UTF-8, these will be automatically converted to UT
 ## Contributing
 
 Contributions are encouraged and welcome; I am always happy to get feedback or pull requests on GitHub :)
-Create [Github Issues](https://github.com/stelgenhof/opensubtitles/issues) for bugs and new features and comment on the
+Create [GitHub Issues](https://github.com/stelgenhof/opensubtitles/issues) for bugs and new features and comment on the
 ones you are interested in.
 
 If you enjoy what I am making, an extra cup of coffee is very much appreciated :). Your support helps me to put more
