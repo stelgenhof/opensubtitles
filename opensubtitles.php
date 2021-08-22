@@ -20,7 +20,7 @@ use Illuminate\Filesystem\Filesystem;
 use League\CLImate\CLImate;
 
 const APP_NAME = 'OpenSubtitles Downloader';
-const APP_VERSION = '0.3';
+const APP_VERSION = '0.4';
 $app_name = APP_NAME.' v'.APP_VERSION;
 
 // Start CLI
