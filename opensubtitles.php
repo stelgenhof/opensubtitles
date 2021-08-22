@@ -55,7 +55,7 @@ $container['files'] = new Filesystem();
 $cacheManager = new CacheManager($container);
 $cache = $cacheManager->store();
 
-// Initialize the HTTP and XMLRPC Clients
+// Initialize the HTTP and XML-RPC Clients
 $httpClient = new GuzzleClient();
 $client = new fXmlRpcClient(
     $_ENV['OPENSUBTITLES_API_URL'],
@@ -90,7 +90,6 @@ try {
             );
 
             $cache->put($cache_key, $response, 60);
-            $em = $response;
         } else {
             $cli->error('Unable to retrieve the subtitles ('.$response['status'].').');
             exit();
@@ -130,7 +129,7 @@ try {
             }
 
             $srtFile = $movieDir.'/'.basename($hit['SubDownloadLink'], '.gz').'.srt';
-            uncompress($subtitleFile, $srtFile);
+            deflate($subtitleFile, $srtFile);
 
             $srtContents = $container['files']->get($srtFile);
 
@@ -168,7 +167,7 @@ $cli->br()->info('Completed.');
  * @param string $srcName the filepath of the original GZipped file
  * @param string $dstName the filepath of the uncompressed file (destination)
  */
-function uncompress(string $srcName, string $dstName): void
+function deflate(string $srcName, string $dstName): void
 {
     $sfp = gzopen($srcName, 'rb');
     $fp = fopen($dstName, 'wb');
