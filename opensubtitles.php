@@ -170,7 +170,14 @@ $cli->br()->info('Completed.');
 function deflate(string $srcName, string $dstName): void
 {
     $sfp = gzopen($srcName, 'rb');
+    if (!$sfp) {
+        throw new RuntimeException('unable to open source file for reading');
+    }
+
     $fp = fopen($dstName, 'wb');
+    if (!$fp) {
+        throw new RuntimeException('unable to open destination file for swriting');
+    }
 
     while (!gzeof($sfp)) {
         $string = gzread($sfp, 4096);
