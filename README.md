@@ -35,13 +35,13 @@ Configuration
 For the OpenSubtitles Downloader to run correctly, the configuration variables in the `.env` need to be populated with
 the correct values:
 
-- **OPEN_SUBTITLE_USER_AGENT** The user agent string provided by OpenSubtitles. A temporary test user agent can be used,
+- **OPEN_SUBTITLES_USER_AGENT** The user agent string provided by OpenSubtitles. A temporary test user agent can be used,
   but it is strongly recommended applying for one.
-- **OPEN_SUBTITLE_USERNAME** Your OpenSubtitles username.
-- **OPEN_SUBTITLE_PASSWORD** Your OpenSubtitles password.
-- **OPEN_SUBTITLE_TARGET_ENCODING** The targeted encoding. OpenSubtitles Downloader will transcode the subtitles if they
+- **OPEN_SUBTITLES_USERNAME** Your OpenSubtitles username.
+- **OPEN_SUBTITLES_PASSWORD** Your OpenSubtitles password.
+- **OPEN_SUBTITLES_TARGET_ENCODING** The targeted encoding. OpenSubtitles Downloader will transcode the subtitles if they
   contain foreign characters. Usually `UTF-8` as a value should work fine.
-- **OPEN_SUBTITLE_LANGUAGES** A (comma delimited) list of language codes for the preferred translations.
+- **OPEN_SUBTITLES_LANGUAGES** A (comma delimited) list of language codes for the preferred translations.
 
 Please check the [OpenSubtitles.org] webpage for more information on how to obtain a user account and a application user
 agent.

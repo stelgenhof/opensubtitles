@@ -62,22 +62,22 @@ try {
 $httpClient = new GuzzleClient();
 
 try {
-    $response = (new FilesystemAdapter())->get(md5($_ENV['OPEN_SUBTITLE_LANGUAGES'].$imdbID), function (ItemInterface $item) use ($imdbID): array {
+    $response = (new FilesystemAdapter())->get(md5($_ENV['OPEN_SUBTITLES_LANGUAGES'].$imdbID), function (ItemInterface $item) use ($imdbID): array {
         $item->expiresAfter(3600);
 
         $client = new fXmlRpcClient(API_URL);
 
         $response = $client->call('LogIn', [
-            $_ENV['OPEN_SUBTITLE_USERNAME'],
-            $_ENV['OPEN_SUBTITLE_PASSWORD'],
+            $_ENV['OPEN_SUBTITLES_USERNAME'],
+            $_ENV['OPEN_SUBTITLES_PASSWORD'],
             'en',
-            $_ENV['OPEN_SUBTITLE_USER_AGENT'],
+            $_ENV['OPEN_SUBTITLES_USER_AGENT'],
         ]);
 
         if ('200 OK' === $response['status'] && !empty($response['token'])) {
             $response = $client->call(
                 'SearchSubtitles',
-                [$response['token'], [['sublanguageid' => $_ENV['OPEN_SUBTITLE_LANGUAGES'], 'imdbid' => $imdbID]]]
+                [$response['token'], [['sublanguageid' => $_ENV['OPEN_SUBTITLES_LANGUAGES'], 'imdbid' => $imdbID]]]
             );
         } else {
             throw new RuntimeException(sprintf('Unable to retrieve the subtitles (%s).', $response['status']));
@@ -91,7 +91,7 @@ try {
     if (0 === $subtitleCount) {
         $languages = implode(', ', array_map(static function ($a) {
             return locale_get_display_language($a, 'en');
-        }, explode(',', $_ENV['OPEN_SUBTITLE_LANGUAGES'])));
+        }, explode(',', $_ENV['OPEN_SUBTITLES_LANGUAGES'])));
 
         $cli->error(sprintf(
             'No %s subtitles found for IMDB ID %s. Please make sure to provide a valid IMDB ID.',
@@ -212,7 +212,7 @@ function downloadSubtitle(array $hit, ClientInterface $client): void
  */
 function transcode(string $srtFile, string $encoding): void
 {
-    if ($_ENV['OPEN_SUBTITLE_TARGET_ENCODING'] === $encoding) {
+    if ($_ENV['OPEN_SUBTITLES_TARGET_ENCODING'] === $encoding) {
         return;
     }
 
@@ -222,7 +222,7 @@ function transcode(string $srtFile, string $encoding): void
         throw new RuntimeException('unable to open subtitle file for reading');
     }
 
-    $srtContents = iconv($encoding, $_ENV['OPEN_SUBTITLE_TARGET_ENCODING'], $srtContents);
+    $srtContents = iconv($encoding, $_ENV['OPEN_SUBTITLES_TARGET_ENCODING'], $srtContents);
 
     if (!$srtContents) {
         throw new RuntimeException('unable to transcode the subtitle file');
