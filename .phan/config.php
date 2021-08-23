@@ -350,11 +350,11 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'vendor/guzzlehttp/guzzle',
-        'vendor/illuminate',
         'vendor/league/climate',
         'vendor/lstrojny/fxmlrpc',
-        'vendor/php-http/guzzle6-adapter',
+        'vendor/php-http/guzzle7-adapter',
         'vendor/psr',
+        'vendor/symfony',
         'vendor/vlucas/phpdotenv',
     ],
 
