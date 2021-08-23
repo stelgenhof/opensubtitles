@@ -8,9 +8,9 @@ use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 use fXmlRpc\Client as fXmlRpcClient;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use League\CLImate\CLImate;
-use Psr\Http\Client\ClientInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
@@ -45,9 +45,7 @@ $cli->lightGreen()->border('-*-', strlen($app_name));
 $cli->clearLine();
 
 $imdbID = $cli->arguments->get('imdb');
-if ($cli->arguments->exists('imdb') && !empty($cli->arguments->get('imdb'))) {
-    $imdbID = $cli->arguments->get('imdb');
-} else {
+if (!$cli->arguments->exists('imdb') || empty($cli->arguments->get('imdb'))) {
     $input = $cli->input('Please enter an IMDB Movie Number:');
     $imdbID = $input->prompt();
 }
@@ -97,7 +95,7 @@ try {
         $cli->error(sprintf(
             'No %s subtitles found for IMDB ID %s. Please make sure to provide a valid IMDB ID.',
             $languages,
-            $imdbID
+            (string) $imdbID
         ));
         exit();
     }
