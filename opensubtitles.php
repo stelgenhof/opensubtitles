@@ -18,6 +18,7 @@ const APP_NAME = 'OpenSubtitles Downloader';
 const APP_VERSION = '0.4';
 $app_name = APP_NAME.' v'.APP_VERSION;
 const SUBTITLES_PATH = __DIR__.DIRECTORY_SEPARATOR.'subtitles';
+const API_URL = 'https://api.opensubtitles.org/xml-rpc';
 
 $cli = new CLImate();
 
@@ -61,22 +62,22 @@ try {
 $httpClient = new GuzzleClient();
 
 try {
-    $response = (new FilesystemAdapter())->get(md5($_ENV['OPENSUBTITLES_LANGUAGES'].$imdbID), function (ItemInterface $item) use ($imdbID): array {
+    $response = (new FilesystemAdapter())->get(md5($_ENV['OPEN_SUBTITLE_LANGUAGES'].$imdbID), function (ItemInterface $item) use ($imdbID): array {
         $item->expiresAfter(3600);
 
-        $client = new fXmlRpcClient($_ENV['OPENSUBTITLES_API_URL']);
+        $client = new fXmlRpcClient(API_URL);
 
         $response = $client->call('LogIn', [
-            $_ENV['OPENSUBTITLES_USERNAME'],
-            $_ENV['OPENSUBTITLES_PASSWORD'],
+            $_ENV['OPEN_SUBTITLE_USERNAME'],
+            $_ENV['OPEN_SUBTITLE_PASSWORD'],
             'en',
-            $_ENV['OPENSUBTITLES_USER_AGENT'],
+            $_ENV['OPEN_SUBTITLE_USER_AGENT'],
         ]);
 
         if ('200 OK' === $response['status'] && !empty($response['token'])) {
             $response = $client->call(
                 'SearchSubtitles',
-                [$response['token'], [['sublanguageid' => $_ENV['OPENSUBTITLES_LANGUAGES'], 'imdbid' => $imdbID]]]
+                [$response['token'], [['sublanguageid' => $_ENV['OPEN_SUBTITLE_LANGUAGES'], 'imdbid' => $imdbID]]]
             );
         } else {
             throw new RuntimeException(sprintf('Unable to retrieve the subtitles (%s).', $response['status']));
@@ -90,7 +91,7 @@ try {
     if (0 === $subtitleCount) {
         $languages = implode(', ', array_map(static function ($a) {
             return locale_get_display_language($a, 'en');
-        }, explode(',', $_ENV['OPENSUBTITLES_LANGUAGES'])));
+        }, explode(',', $_ENV['OPEN_SUBTITLE_LANGUAGES'])));
 
         $cli->error(sprintf(
             'No %s subtitles found for IMDB ID %s. Please make sure to provide a valid IMDB ID.',
@@ -211,7 +212,7 @@ function downloadSubtitle(array $hit, ClientInterface $client): void
  */
 function transcode(string $srtFile, string $encoding): void
 {
-    if ($_ENV['OPENSUBTITLES_TARGET_ENCODING'] === $encoding) {
+    if ($_ENV['OPEN_SUBTITLE_TARGET_ENCODING'] === $encoding) {
         return;
     }
 
@@ -221,7 +222,7 @@ function transcode(string $srtFile, string $encoding): void
         throw new RuntimeException('unable to open subtitle file for reading');
     }
 
-    $srtContents = iconv($encoding, $_ENV['OPENSUBTITLES_TARGET_ENCODING'], $srtContents);
+    $srtContents = iconv($encoding, $_ENV['OPEN_SUBTITLE_TARGET_ENCODING'], $srtContents);
 
     if (!$srtContents) {
         throw new RuntimeException('unable to transcode the subtitle file');

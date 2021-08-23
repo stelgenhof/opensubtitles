@@ -18,11 +18,13 @@ to [Semantic Versioning](http://semver.org).
 - Simplified fXmlRpc client use by using its default HTTP transport.
 - Replaced Illuminate Cache by Symfony Cache.
 - Extracted code into separate functions to make it the script more clean.
+- Renamed environment variables to make them easier to read.
 
 ### Fixed
 
 ### Removed
 
+- API URL from the environment file as this is merely a static value.
 - Replaced Illuminate Cache by Symfony Cache.
 - Unnecessary comments.
 
