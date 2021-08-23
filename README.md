@@ -1,14 +1,13 @@
 OpenSubtitles Downloader
 ==========
 
-OpenSubtitles Downloader is a simple console application to download subtitles
-from [Opensubtitles.org](https://www.opensubtitles.org). Just provide the IMDB Movie ID, and it will download all
-subtitles for the specified languages.
+OpenSubtitles Downloader is a simple console application to download subtitles from [Opensubtitles.org]. Just provide
+the IMDB Movie ID, and it will download all subtitles for the specified languages.
 
 System Requirements
 -------------------
 
-You need **PHP >= 7.4** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
+You need **PHP >= 7.3** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
 addition, the following PHP extensions are needed:
 
 - mbstring
@@ -29,6 +28,23 @@ Install OpenSubtitles Downloader by cloning this repository:
 ```
 $ git clone https://github.com/stelgenhof/opensubtitles.git
 ```
+
+Configuration
+------------
+
+For the OpenSubtitles Downloader to run correctly, the configuration variables in the `.env` need to be populated with
+the correct values:
+
+- **OPEN_SUBTITLE_USER_AGENT** The user agent string provided by OpenSubtitles. A temporary test user agent can be used,
+  but it is strongly recommended applying for one.
+- **OPEN_SUBTITLE_USERNAME** Your OpenSubtitles username.
+- **OPEN_SUBTITLE_PASSWORD** Your OpenSubtitles password.
+- **OPEN_SUBTITLE_TARGET_ENCODING** The targeted encoding. OpenSubtitles Downloader will transcode the subtitles if they
+  contain foreign characters. Usually `UTF-8` as a value should work fine.
+- **OPEN_SUBTITLE_LANGUAGES** A (comma delimited) list of language codes for the preferred translations.
+
+Please check the [OpenSubtitles.org] webpage for more information on how to obtain a user account and a application user
+agent.
 
 Basic Usage
 -----------
@@ -55,3 +71,5 @@ time into Open-Source Software projects like this.
 Disclaimer
 ----------
 Please feel free to use, modify, hack this script as you like. It is not perfect, but does the trick for now :).
+
+[OpenSubtitles.org]: https://www.opensubtitles.org
