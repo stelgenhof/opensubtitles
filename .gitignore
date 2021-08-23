@@ -5,3 +5,4 @@ composer.lock
 _cache
 /.php_cs.cache
 /.php-cs-fixer.cache
+/subtitles/
