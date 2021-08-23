@@ -23,7 +23,6 @@ to [Semantic Versioning](http://semver.org).
 
 ### Removed
 
-- Support for PHP7.3.
 - Replaced Illuminate Cache by Symfony Cache.
 - Unnecessary comments.
 
