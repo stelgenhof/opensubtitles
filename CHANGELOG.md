@@ -14,6 +14,7 @@ to [Semantic Versioning](http://semver.org).
 
 ### Changed
 
+- Renamed main script to `opensubtitles` (extension is not necessary as it is an executable).
 - Upgraded Guzzle to v7.
 - Simplified fXmlRpc client use by using its default HTTP transport.
 - Replaced Illuminate Cache by Symfony Cache.

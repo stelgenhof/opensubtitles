@@ -50,7 +50,7 @@ Basic Usage
 -----------
 
 ```
-$ ./opensubtitles.php
+$ ./opensubtitles
 ```
 
 Then just enter the IMDB Movie ID. The downloaded subtitles will be saved in a folder by the movie name. For subtitles
