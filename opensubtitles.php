@@ -21,10 +21,36 @@ const SUBTITLES_PATH = __DIR__.DIRECTORY_SEPARATOR.'subtitles';
 
 $cli = new CLImate();
 
+$cli->arguments->add([
+    'imdb' => [
+        'description' => 'IMDB Movie number',
+    ],
+    'help' => [
+        'prefix' => 'h',
+        'longPrefix' => 'help',
+        'description' => 'Prints this usage description',
+        'noValue' => true,
+    ],
+]);
+$cli->arguments->parse();
+
+if ($cli->arguments->defined('help')) {
+    $cli->usage();
+    exit();
+}
+
 $cli->description($app_name);
 $cli->lightGreen($app_name);
 $cli->lightGreen()->border('-*-', strlen($app_name));
 $cli->clearLine();
+
+$imdbID = $cli->arguments->get('imdb');
+if ($cli->arguments->exists('imdb') && !empty($cli->arguments->get('imdb'))) {
+    $imdbID = $cli->arguments->get('imdb');
+} else {
+    $input = $cli->input('Please enter an IMDB Movie Number:');
+    $imdbID = $input->prompt();
+}
 
 try {
     $dotenv = Dotenv::createImmutable(__DIR__);
@@ -33,9 +59,6 @@ try {
     $cli->error(sprintf('ERROR: %s', $e->getMessage()));
     exit();
 }
-
-$input = $cli->input('Please enter an IMDB Movie Number:');
-$imdbID = $input->prompt();
 
 $httpClient = new GuzzleClient();
 
@@ -76,6 +99,7 @@ try {
             $languages,
             $imdbID
         ));
+        exit();
     }
 
     $cli->br()->whisper(sprintf('%d %s found:', $subtitleCount, ($subtitleCount > 1 ? 'subtitles' : 'subtitle')));
