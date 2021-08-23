@@ -15,7 +15,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
 const APP_NAME = 'OpenSubtitles Downloader';
-const APP_VERSION = '1.0';
+const APP_VERSION = '0.4';
 $app_name = APP_NAME.' v'.APP_VERSION;
 const SUBTITLES_PATH = __DIR__.DIRECTORY_SEPARATOR.'subtitles';
 

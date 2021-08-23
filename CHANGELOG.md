@@ -9,11 +9,23 @@ to [Semantic Versioning](http://semver.org).
 
 ### Added
 
+- Argument for an optional IMDB Movie number. If not given, a prompt will be shown.
+- Argument to display usage/help instructions
+
 ### Changed
+
+- Upgraded Guzzle to v7.
+- Simplified fXmlRpc client use by using its default HTTP transport.
+- Replaced Illuminate Cache by Symfony Cache.
+- Extracted code into separate functions to make it the script more clean.
 
 ### Fixed
 
 ### Removed
+
+- Support for PHP7.3.
+- Replaced Illuminate Cache by Symfony Cache.
+- Unnecessary comments.
 
 ## [v0.3] 2020-07-27
 
