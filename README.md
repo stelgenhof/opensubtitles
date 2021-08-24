@@ -62,7 +62,7 @@ Contributions are encouraged and welcome; I am always happy to get feedback or p
 Create [Issues](https://gitlab.com/stelgenhof/opensubtitles/-/issues) for bugs and new features and comment on the ones
 you are interested in.
 
-Please refer to the [Contributing Guidelines](CONTRIBUTING) for more details.
+Please refer to the [Contributing Guidelines](CONTRIBUTING.md) for more details.
 
 If you enjoy what I am making, an extra cup of coffee is very much appreciated :). Your support helps me to put more
 time into Open-Source Software projects like this.
