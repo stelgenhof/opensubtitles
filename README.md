@@ -1,8 +1,8 @@
 OpenSubtitles Downloader
 ==========
 
-OpenSubtitles Downloader is a simple console application to download subtitles from [Opensubtitles.org]. Just provide
-the IMDB Movie ID, and it will download all subtitles for the specified languages.
+OpenSubtitles Downloader is a simple PHP console application to download subtitles from [Opensubtitles.org]. Just
+provide the IMDB Movie ID, and it will download all subtitles for the specified languages.
 
 System Requirements
 -------------------
@@ -50,17 +50,19 @@ Basic Usage
 -----------
 
 ```
-$ ./opensubtitles
+$ ./opensubtitles [IMDB Movie Number]
 ```
 
-Then just enter the IMDB Movie ID. The downloaded subtitles will be saved in a folder by the movie name. For subtitles
-files that are not encoded in UTF-8, these will be automatically converted to UTF-8 (if possible).
+The downloaded subtitles will be saved in the `subtitles` directory in a subdirectory named with the title of movie. For
+subtitles files that are not encoded in UTF-8, these will be automatically converted to UTF-8 (if possible).
 
 ## Contributing
 
 Contributions are encouraged and welcome; I am always happy to get feedback or pull requests on GitLab :)
 Create [Issues](https://gitlab.com/stelgenhof/opensubtitles/-/issues) for bugs and new features and comment on the ones
 you are interested in.
+
+Please refer to the [Contributing Guidelines](CONTRIBUTING) for more details.
 
 If you enjoy what I am making, an extra cup of coffee is very much appreciated :). Your support helps me to put more
 time into Open-Source Software projects like this.
