@@ -10,6 +10,23 @@
       "role": "Maintainer"
     }
   ],
+  "keywords": [
+    "subtitles",
+    "opensubtitles",
+    "cli"
+  ],
+  "readme": "README.md",
+  "support": {
+    "issues": "https://gitlab.com/stelgenhof/opensubtitles/-/issues",
+    "source": "https://gitlab.com/stelgenhof/opensubtitles",
+    "docs": "https://gitlab.com/stelgenhof/opensubtitles"
+  },
+  "funding": [
+    {
+      "type": "other",
+      "url": "https://www.buymeacoffee.com/sachatelgenhof"
+    }
+  ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
