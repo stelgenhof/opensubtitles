@@ -2,7 +2,7 @@
   "name": "stelgenhof/opensubtitles",
   "type": "project",
   "description": "OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org.",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Sacha Telgenhof Oude Koehorst",
