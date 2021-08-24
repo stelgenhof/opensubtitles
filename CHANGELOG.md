@@ -9,6 +9,16 @@ to [Semantic Versioning](http://semver.org).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v0.4] 2021-08-24
+
+### Added
+
 - Argument for an optional IMDB Movie number. If not given, a prompt will be shown.
 - Argument to display usage/help instructions
 
@@ -51,7 +61,9 @@ to [Semantic Versioning](http://semver.org).
 
 - Initial release
 
-[Unreleased]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.3...dev
+[Unreleased]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.4...dev
+
+[v0.4]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.3...0.4
 
 [v0.3]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.2...0.3
 
