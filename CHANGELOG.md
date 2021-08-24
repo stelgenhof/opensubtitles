@@ -51,10 +51,10 @@ to [Semantic Versioning](http://semver.org).
 
 - Initial release
 
-[Unreleased]: https://github.com/stelgenhof/opensubtitles/compare/0.3...HEAD
+[Unreleased]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.3...dev
 
-[v0.3]: https://github.com/stelgenhof/opensubtitles/compare/0.2...0.3
+[v0.3]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.2...0.3
 
-[v0.2]: https://github.com/stelgenhof/opensubtitles/compare/0.1...0.2
+[v0.2]: https://gitlab.com/stelgenhof/opensubtitles/-/compare/0.1...0.2
 
-[v0.1]: https://github.com/stelgenhof/opensubtitles/releases/tag/0.1
+[v0.1]: https://gitlab.com/stelgenhof/opensubtitles/-/releases#0.1
