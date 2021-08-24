@@ -20,6 +20,7 @@ to [Semantic Versioning](http://semver.org).
 - Replaced Illuminate Cache by Symfony Cache.
 - Extracted code into separate functions to make it the script more clean.
 - Renamed environment variables to make them easier to read.
+- Changed license to GPL-3.0
 
 ### Fixed
 

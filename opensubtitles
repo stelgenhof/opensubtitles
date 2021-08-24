@@ -62,6 +62,14 @@ if ($cli->arguments->defined('help')) {
 $cli->description($app_name);
 $cli->lightGreen($app_name);
 $cli->lightGreen()->border('-*-', strlen($app_name));
+
+$license = <<< EOD
+Copyright (C) 2019 - 2021 Sacha Telgenhof
+This program comes with ABSOLUTELY NO WARRANTY; This is free software, 
+and you are welcome to redistribute it under certain conditions.
+EOD;
+
+$cli->whisper($license)->br();
 $cli->clearLine();
 
 $imdbID = $cli->arguments->get('imdb');

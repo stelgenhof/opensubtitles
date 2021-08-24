@@ -35,12 +35,12 @@ Configuration
 For the OpenSubtitles Downloader to run correctly, the configuration variables in the `.env` need to be populated with
 the correct values:
 
-- **OPEN_SUBTITLES_USER_AGENT** The user agent string provided by OpenSubtitles. A temporary test user agent can be used,
-  but it is strongly recommended applying for one.
+- **OPEN_SUBTITLES_USER_AGENT** The user agent string provided by OpenSubtitles. A temporary test user agent can be
+  used, but it is strongly recommended applying for one.
 - **OPEN_SUBTITLES_USERNAME** Your OpenSubtitles username.
 - **OPEN_SUBTITLES_PASSWORD** Your OpenSubtitles password.
-- **OPEN_SUBTITLES_TARGET_ENCODING** The targeted encoding. OpenSubtitles Downloader will transcode the subtitles if they
-  contain foreign characters. Usually `UTF-8` as a value should work fine.
+- **OPEN_SUBTITLES_TARGET_ENCODING** The targeted encoding. OpenSubtitles Downloader will transcode the subtitles if
+  they contain foreign characters. Usually `UTF-8` as a value should work fine.
 - **OPEN_SUBTITLES_LANGUAGES** A (comma delimited) list of language codes for the preferred translations.
 
 Please check the [OpenSubtitles.org] webpage for more information on how to obtain a user account and a application user
@@ -65,11 +65,12 @@ ones you are interested in.
 If you enjoy what I am making, an extra cup of coffee is very much appreciated :). Your support helps me to put more
 time into Open-Source Software projects like this.
 
-<a href="https://www.buymeacoffee.com/sachatelgenhof" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+<a href="https://www.buymeacoffee.com/sachatelgenhof" target="_blank"><img alt="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" title="Buy Me A Coffee"/></a>
 
 
 Disclaimer
 ----------
-Please feel free to use, modify, hack this script as you like. It is not perfect, but does the trick for now :).
+Please feel free to use, modify, hack this script as you like. It is not perfect, but does the trick for now :). Consult
+the [LICENSE](LICENSE) file that comes with this program for more details regarding its license.
 
 [OpenSubtitles.org]: https://www.opensubtitles.org
