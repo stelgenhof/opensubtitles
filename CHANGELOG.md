@@ -16,6 +16,7 @@ to [Semantic Versioning](http://semver.org).
 ### Fixed
 
 ### Removed
+- Support for PHP 7.3.
 
 ## [v0.4] 2021-08-24
 
