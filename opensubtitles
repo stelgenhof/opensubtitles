@@ -5,7 +5,7 @@ declare(strict_types=1);
 // SPDX-License-Identifier: GPL-3.0
 /*
  *   OpenSubtitles Downloader
- *   Copyright (C) 2019 - 2021  Sacha Telgenhof
+ *   Copyright (C) 2019 - 2022  Sacha Telgenhof
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ $cli->lightGreen($app_name);
 $cli->lightGreen()->border('-*-', strlen($app_name));
 
 $license = <<< EOD
-Copyright (C) 2019 - 2021 Sacha Telgenhof
+Copyright (C) 2019 - 2022 Sacha Telgenhof
 This program comes with ABSOLUTELY NO WARRANTY; This is free software, 
 and you are welcome to redistribute it under certain conditions.
 EOD;
@@ -142,7 +142,7 @@ try {
 
         downloadSubtitle($hit, $httpClient);
     }
-} catch (Exception | \Psr\Cache\InvalidArgumentException $e) {
+} catch (Exception|\Psr\Cache\InvalidArgumentException $e) {
     $cli->error(sprintf('ERROR: %s', $e->getMessage()));
 }
 
@@ -219,7 +219,7 @@ function downloadSubtitle(array $hit, ClientInterface $client): void
                 $hit['SubDownloadLink'],
                 ['sink' => $subtitleFile]
             );
-        } catch (Exception | GuzzleException $e) {
+        } catch (Exception|GuzzleException $e) {
             throw new RuntimeException($e->getMessage());
         }
     }

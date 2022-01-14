@@ -10,6 +10,8 @@ to [Semantic Versioning](http://semver.org).
 ### Added
 
 ### Changed
+- Updated dependencies.
+- Updated copyright year.
 
 ### Fixed
 

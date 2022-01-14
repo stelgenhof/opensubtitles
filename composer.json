@@ -41,7 +41,7 @@
     "league/climate": "^3.5",
     "lstrojny/fxmlrpc": "^0.22.0",
     "php-http/guzzle7-adapter": "^1.0",
-    "symfony/cache": "^5.3",
+    "symfony/cache": "^6.0",
     "vlucas/phpdotenv": "^5.3"
   },
   "require-dev": {
