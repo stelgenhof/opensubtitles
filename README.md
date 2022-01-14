@@ -7,7 +7,7 @@ provide the IMDB Movie ID, and it will download all subtitles for the specified 
 System Requirements
 -------------------
 
-You need **PHP >= 7.3** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
+You need **PHP >= 7.4** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
 addition, the following PHP extensions are needed:
 
 - mbstring
