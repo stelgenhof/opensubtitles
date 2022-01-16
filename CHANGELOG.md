@@ -8,10 +8,13 @@ to [Semantic Versioning](http://semver.org).
 ## [Unreleased]
 
 ### Added
+- Security document explaining policy around security vulnerabilities and supported PHP versions.
+- Guidelines regarding testing.
+- Static analysis packages and scripts.
 
 ### Changed
-- Updated dependencies.
-- Updated copyright year.
+- Updated dependencies and copyright year.
+- Reformatted Code of Conduct.
 
 ### Fixed
 
