@@ -1,7 +1,12 @@
 {
   "name": "stelgenhof/opensubtitles",
-  "type": "project",
   "description": "OpenSubtitles Downloader is a simple console application to download subtitles from Opensubtitles.org.",
+  "keywords": [
+    "subtitles",
+    "opensubtitles",
+    "cli"
+  ],
+  "type": "project",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -9,11 +14,6 @@
       "email": "me@sachatelgenhof.com",
       "role": "Maintainer"
     }
-  ],
-  "keywords": [
-    "subtitles",
-    "opensubtitles",
-    "cli"
   ],
   "readme": "README.md",
   "support": {
@@ -48,15 +48,21 @@
     "roave/security-advisories": "dev-latest",
     "friendsofphp/php-cs-fixer": "^3.0"
   },
-  "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
   "scripts": {
     "post-root-package-install": [
       "php -r \"copy('.env.dist', '.env');\""
     ],
-    "format": "./vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    "format": "vendor/bin/php-cs-fixer fix",
+    "phpstan": "vendor/bin/phpstan analyse",
+    "psalm": "vendor/bin/psalm --threads=2",
+    "analyse": [
+      "@phpstan",
+      "@psalm"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
   }
 }
