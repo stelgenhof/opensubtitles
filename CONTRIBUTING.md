@@ -17,6 +17,8 @@ When contributing there are a few guidelines I would like you to keep in mind:
   This will check/correct all the code for the PSR-12 Coding Standard using the
   wonderful [php-cs-fixer](https://cs.symfony.com).
 
+- **Add unit tests!** - Your Pull Request won't be accepted if it does not have tests:
+
 - **Document any change** - Make sure the `README.md`, `CHANGELOG.md` and any other relevant documentation are kept
   up-to-date.
 
@@ -26,3 +28,15 @@ When contributing there are a few guidelines I would like you to keep in mind:
   multiple intermediate commits while developing,
   please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#_changing_multiple) before
   submitting.
+
+## Running Tests
+
+``` bash
+$ composer test
+```
+
+or alternatively run with:
+
+``` bash
+$ vendor/bin/phpunit
+```
