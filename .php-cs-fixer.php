@@ -14,8 +14,7 @@ declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
-    ->files()->name('opensubtitles')
-    ->notPath('var');
+    ->files()->name('opensubtitles');
 
 $config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true)->setRules([
