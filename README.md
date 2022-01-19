@@ -4,8 +4,9 @@ OpenSubtitles Downloader
 OpenSubtitles Downloader is a simple PHP console application to download subtitles from [Opensubtitles.org]. Just
 provide the IMDB Movie ID, and it will download all subtitles for the specified languages.
 
-**Note**: This project is maintained on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git), and mirrored (as read-only) on GitHub. Please submit any issues, 
-merge requests, etc. on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git). 
+**Note**: This project is maintained on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git), and mirrored (as
+read-only) on GitHub. Please submit any issues, merge requests, etc.
+on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git).
 
 System Requirements
 -------------------
