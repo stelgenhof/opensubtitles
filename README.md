@@ -1,40 +1,40 @@
-OpenSubtitles Downloader
-==========
+# DEPRECATED - OpenSubtitles Downloader
+
+:warning: **Notice** :warning:
+
+The API running on OpenSubtitles.org and powering this project, has been deprecated and not possible any longer to register new user agents anymore at the end of 2023. This project is hence no longer supported or maintained, please consider using the [OpenSubtitles REST API](https://opensubtitles.stoplight.io/docs/opensubtitles-api/) instead.
 
 OpenSubtitles Downloader is a simple PHP console application to download subtitles from [Opensubtitles.org]. Just
 provide the IMDB Movie ID, and it will download all subtitles for the specified languages.
 
-**Note**: This project is maintained on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git), and mirrored (as
+**Note**: This project is maintained on [GitLab](https://gitlab.com/stelgenhof/opensubtitles.git), and mirrored (as
 read-only) on GitHub. Please submit any issues, merge requests, etc.
-on [Gitlab](https://gitlab.com/stelgenhof/opensubtitles.git).
+on [GitLab](https://gitlab.com/stelgenhof/opensubtitles.git).
 
-System Requirements
--------------------
+## System Requirements
 
-You need **PHP >= 7.4** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
+You need **PHP >= 8.0** to use OpenSubtitles Downloader but the latest stable version of PHP is recommended. In
 addition, the following PHP extensions are needed:
 
-- mbstring
-- intl
-- simplexml
-- iconv
-- xmlrpc
-- zlib
+- `mbstring`
+- `intl`
+- `simplexml`
+- `iconv`
+- `xmlrpc`
+- `zlib`
 
 Also, you need an OpenSubtitles developer account. Please follow the instructions
 here: [OpenSubtitles Developer Information](https://trac.opensubtitles.org/projects/opensubtitles/wiki/DevReadFirst).
 
-Installation
-------------
+## Installation
 
 Install OpenSubtitles Downloader by cloning this repository:
 
-```
-$ git clone https://gitlab.com/stelgenhof/opensubtitles.git
+``` shell
+git clone https://gitlab.com/stelgenhof/opensubtitles.git
 ```
 
-Configuration
-------------
+## Configuration
 
 For the OpenSubtitles Downloader to run correctly, the configuration variables in the `.env` need to be populated with
 the correct values:
@@ -50,11 +50,10 @@ the correct values:
 Please check the [OpenSubtitles.org] webpage for more information on how to obtain a user account and a application user
 agent.
 
-Basic Usage
------------
+## Basic Usage
 
-```
-$ ./opensubtitles [IMDB Movie Number]
+``` shell
+./opensubtitles [IMDB Movie Number]
 ```
 
 The downloaded subtitles will be saved in the `subtitles` directory in a subdirectory named with the title of movie. For
@@ -73,9 +72,8 @@ time into Open-Source Software projects like this.
 
 <a href="https://www.buymeacoffee.com/sachatelgenhof" target="_blank"><img alt="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" title="Buy Me A Coffee"/></a>
 
+## Disclaimer
 
-Disclaimer
-----------
 Please feel free to use, modify, hack this script as you like. It is not perfect, but does the trick for now :). Consult
 the [LICENSE](LICENSE) file that comes with this program for more details regarding its license.
 
