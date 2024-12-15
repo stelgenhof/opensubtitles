@@ -1,6 +1,6 @@
 # DEPRECATED - OpenSubtitles Downloader
 
-:warning: **Notice** :warning:
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 The API running on OpenSubtitles.org and powering this project, has been deprecated and not possible any longer to register new user agents anymore at the end of 2023. This project is hence no longer supported or maintained, please consider using the [OpenSubtitles REST API](https://opensubtitles.stoplight.io/docs/opensubtitles-api/) instead.
 
